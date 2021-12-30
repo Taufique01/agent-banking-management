@@ -1,2 +1,11 @@
 # Google App Engine generated folder
 appengine-generated/
+.idea/
+__pycache__/
+.env
+venv/
+env/
+.DS_Store
+node_modules
+*.iml
+

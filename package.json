@@ -1,0 +1,16 @@
+{
+  "name": "order-it",
+  "version": "1.0.0",
+  "engines": {
+    "node": "14.x"
+  },
+  "main": "index.js",
+  "repository": "",
+  "private": true,
+  "scripts": {
+    "heroku-prebuild": "NODE_ENV=production cd frontend/ && yarn install && yarn build && cd .."
+  },
+  "cacheDirectories": [
+    "frontend/node_modules"
+  ]
+}
