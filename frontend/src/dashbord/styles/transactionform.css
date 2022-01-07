@@ -1,0 +1,75 @@
+.transaction-form-container{
+
+ width:70vw;
+}
+
+.transaction-form-container .add-btn button{
+color:white;
+background-color: #0A2558;
+height: 50px;
+width: inherit;
+border:none;
+width:20%;
+border-radius: 5px;
+margin-top:0px;
+font-weight: bold;
+
+}
+
+.transaction-form-container .deposit-form-content{
+    width:100%;
+    margin-top:20px;
+}
+
+.transaction-form-container .deposit-form-content .form-group{
+   display: flex;
+   width:60vw;
+   margin-bottom:10px;
+}
+.transaction-form-container .deposit-form-content .form-group label{
+    width:30%;
+    text-align:right;
+    margin-right:5%;
+    padding-top:5px;
+}
+
+.transaction-form-container .deposit-form-content .form-group input,.select{
+
+width:60%;
+outline: none;
+border-radius: 5px;
+
+
+}
+
+.transaction-form-container .deposit-form-content .form-group input{
+    height: 50px;
+    border: 1px solid grey;
+}
+.transaction-form-container .deposit-form-content .form-group .select{
+    height: 50px;
+    background-color: white;
+   
+    
+}
+
+.transaction-form-container .deposit-form-content .form-group textarea{
+  
+   
+    outline: none;
+}
+
+.deposit-form-content button[type="submit"]{
+
+    background-color: #0A2558;
+    border-radius: 5px;
+    border:1px solid grey;
+    height: 50px;
+    color:white;
+    width:15%;
+    margin-top:10px;
+    margin-left:67%;
+    cursor: pointer;
+    
+
+}

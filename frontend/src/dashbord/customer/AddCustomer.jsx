@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAddCustomerClient } from "./addCustomerClient";
+import '../styles/customar.css'
 
 export const AddCustomer = () => {
   const { status, addNewCustomer } = useAddCustomerClient();
@@ -37,29 +38,42 @@ export const AddCustomer = () => {
 
   return (
     <>
-      <div>Add customer form</div>
+      <div className="dash-header">Add customer</div>
+     
+      <div className="form-container">
 
+      <div className="form-group">
+      <label for="name">Name :</label>
       <input
         onChange={(e) => {
           handleNameChange(e.target.value);
         }}
         placeholder="Name"
       />
-
+      </div>
+    
+      <div className="form-group">
+      <label for="name">Phone :</label>
       <input
         onChange={(e) => {
           handlePhoneChange(e.target.value);
         }}
         placeholder="phone"
       />
+      </div>
+
+      <div className="form-group">
+      <label for="name">Address :</label>
       <input
         onChange={(e) => {
           handleAddressChange(e.target.value);
         }}
         placeholder="address"
       />
+      </div>
 
-      <button onClick={addCustomer}>add customer</button>
+      <div onClick={addCustomer} className="submit-btn">Add Customer</div>
+      </div>
     </>
   );
 };

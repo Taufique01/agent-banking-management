@@ -12,6 +12,8 @@
   width: 240px;
   background: #0A2558;
   transition: all 0.5s ease;
+  z-index: 1000;
+  margin-right: 20px;
 }
 .sidebar.active{
   width: 60px;
@@ -75,7 +77,7 @@
 .home-section{
   position: relative;
   background: #f5f5f5;
-  min-height: 100vh;
+  margin-bottom: 10px;
   width: calc(100% - 240px);
   left: 240px;
   transition: all 0.5s ease;
@@ -147,13 +149,14 @@ nav .search-box .bx-search{
 }
 .home-section nav .profile-details{
   display: flex;
-  align-items: center;
+  align-items:right;
   background: #F5F6FA;
-  border: 2px solid #EFEEF1;
+  /* border: 2px solid #EFEEF1; */
   border-radius: 6px;
   height: 50px;
   min-width: 190px;
   padding: 0 15px 0 2px;
+  right:0px;
 }
 nav .profile-details img{
   height: 40px;
@@ -168,10 +171,38 @@ nav .profile-details .admin_name{
   margin: 0 10px;
   white-space: nowrap;
 }
+nav .profile-details .dropdown-container{
+  position: relative;
+  width:100%;
+  margin-top:10px;
+
+ }
+
+nav .profile-details .dropdown-container:hover ul{
+  display: block;
+
+}
+nav .profile-details .dropdown-container ul{
+  list-style: none;
+  position: absolute;
+  color:white;
+  right:0px;
+  left:0px;
+  top:50px;
+  background-color: #081D45;
+  border:1px solid grey;
+  border-radius: 5px;
+  text-align: center;
+  margin-top:-10px;
+  display: none;
+ }
+
 nav .profile-details i{
   font-size: 25px;
   color: #333;
+
 }
+
 .home-section .home-content{
   position: relative;
   padding-top: 104px;
@@ -355,7 +386,10 @@ nav .profile-details i{
   }
 
   .sidebar ul{
-      margin-left:-15px;
+      margin-left:-0px;
+  }
+  .sidebar  ul li .links_name{
+    opacity: 0;
   }
   .sidebar.active{
     width: 220px;
@@ -399,13 +433,18 @@ nav .profile-details i{
 }
 @media (max-width: 700px) {
   nav .sidebar-button .dashboard,
-  nav .profile-details .admin_name,
-  nav .profile-details i{
-    display: none;
+  nav .profile-details .admin_name{
+  
+    /* display: none; */
   }
+  /* nav .profile-details i{
+  
+    text-align: center;
+  } */
   .home-section nav .profile-details{
     height: 50px;
-    min-width: 40px;
+    min-width:40%;
+   
   }
   .home-content .sales-boxes .sales-details{
     width: 560px;
@@ -417,6 +456,6 @@ nav .profile-details i{
     margin-bottom: 15px;
   }
   .sidebar.active ~ .home-section nav .profile-details{
-    display: none;
+    min-width: 50%;
   }
 }

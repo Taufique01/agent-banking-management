@@ -1,0 +1,64 @@
+.search-container{
+position: relative;
+display: inline block;
+background-color: lawngreen;
+
+}
+.search-container .search-customer{
+    position:absolute;
+    height: 50px;
+    outline: none;
+    border-radius: 6px;
+    border:1px solid grey;
+    right:20px;
+    top:0px;
+    font-size:1em;
+   }
+
+.customer-list-table{
+   min-width:80vw;
+   border-spacing:0px;
+   margin-top:5px;
+   padding-top:60px;
+}
+
+.customer-list-table .header{
+background-color: black;
+color:white;
+height:50px;
+border:none;
+
+
+}
+
+.customer-list-table .table-body tr td{
+     text-align: center;
+     height:50px;
+}
+
+.customer-list-table .table-body tr:nth-child(odd){
+    background-color: ivory;
+}
+.customer-list-table .table-body tr:nth-child(even){
+    background-color: AliceBlue;
+}
+
+.pagination-btn{
+ margin-top: 10px;
+  margin-left:33%;
+}
+
+.pagination-btn button{
+    background-color:#0A2558;
+    height:50px;
+    width:100px;
+    margin-left:3px;
+    color:white;
+    border:none;
+    border-radius: 5px;
+    font-weight:900
+
+
+}
+
+
