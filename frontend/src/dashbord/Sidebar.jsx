@@ -23,23 +23,25 @@ export const  DashboardSidebar=()=> {
             <span class="links_name">Add Customer</span>
             </Link>
         </li>
+
         <li>
            <Link to="/customer-list">
             <i class='bx bx-list-ul' title="Customar List" ></i>
             <span class="links_name">Customer list</span>
             </Link>
         </li>
+        
         <li>
-
-        <Link to="/add-deposit">
+          <Link to="/add-transaction">
             <i class='bx bx-pie-chart-alt-2' title="Add Deposit" ></i>
             <span class="links_name">Add Transaction</span>
             </Link>
         </li>
+
         <li>
-        <Link to="/add-withdraw">
+        <Link to="/transaction-list">
             <i class='bx bx-coin-stack' title="Add Withdraw" ></i>
-            <span class="links_name">Add Withdraw</span>
+            <span class="links_name">Transaction List</span>
             </Link> 
         </li>
         <li>

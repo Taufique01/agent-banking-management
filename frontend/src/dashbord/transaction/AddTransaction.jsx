@@ -6,7 +6,7 @@ const options = [
     { value: 'vanilla', label: 'Vanilla' }
   ]
 
-export const AddDepositForm = () => {
+export const AddTransaction = () => {
     return (
       <div className="transaction-form-container"> 
       
@@ -34,9 +34,22 @@ export const AddDepositForm = () => {
               <select class="select"></select>
             </div>
 
+           
+
+
             <div className="form-group">
               <label for="Account">Transaction Type:</label>
               <select class="select"/>
+            </div>
+
+            <div className="form-group">
+              <label for="Account">Receiveing Account:</label>
+              <select class="select"></select>
+            </div>
+
+            <div className="form-group">
+              <label for="Account">Paying  Account::</label>
+              <select class="select"></select>
             </div>
 
            <div className="form-group">

@@ -1,9 +1,13 @@
 .search-container{
 position: relative;
-display: inline block;
-background-color: lawngreen;
+
 
 }
+.search-container .left-side{
+    position: absolute;
+    left:-100px;
+}
+
 .search-container .search-customer{
     position:absolute;
     height: 50px;
@@ -19,7 +23,7 @@ background-color: lawngreen;
    min-width:80vw;
    border-spacing:0px;
    margin-top:5px;
-   padding-top:60px;
+   padding-top:55px;
 }
 
 .customer-list-table .header{

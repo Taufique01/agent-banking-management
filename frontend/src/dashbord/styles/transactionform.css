@@ -43,7 +43,7 @@ border-radius: 5px;
 }
 
 .transaction-form-container .deposit-form-content .form-group input{
-    height: 50px;
+    height: 40px;
     border: 1px solid grey;
 }
 .transaction-form-container .deposit-form-content .form-group .select{

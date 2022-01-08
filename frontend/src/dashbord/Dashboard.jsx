@@ -6,8 +6,8 @@ import { DashboardLanding } from "./DashboardLanding";
 import { DashboardHeader } from "./Header";
 import {DashboardSidebar} from  './Sidebar'
 import { AddCustomer } from "./customer/AddCustomer";
-// import { AddTransaction } from "./transaction/AddTransaction";
-import { AddDepositForm } from './transaction/AddTransaction'
+import { AddTransaction } from './transaction/AddTransaction'
+import { TransactionTable } from "./transaction/TransactionTable";
 import {Header1}  from     "./Header1"
 import { CustomarList } from "./customer/CustomarList";
 import {AccountTable} from "./accounts/AccountSummary"
@@ -42,9 +42,8 @@ export const Dashboard = () => {
         <div style={header}> 
           <Switch>
          
-          <Route path="/add-customer">
-            <AddCustomer />
-          </Route>
+          <Route path="/add-customer" component={()=> <AddCustomer authorize=""/>} />
+          
           <Route path="/customer-list">
             <CustomarList />
           </Route>
@@ -54,8 +53,11 @@ export const Dashboard = () => {
           {/* <Route path="/add-transaction">
            <AddTransaction />
          </Route> */}
-         <Route path="/add-deposit">
-           <AddDepositForm />
+         <Route path="/add-transaction">
+           <AddTransaction />
+         </Route>
+         <Route path="/transaction-list">
+           <TransactionTable />
          </Route>
       </Switch>
       </div>

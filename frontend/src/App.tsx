@@ -4,6 +4,11 @@ import {Router} from 'react-router-dom';
 import {createBrowserHistory} from "history";
 import ReactGA from "react-ga";
 
+const credential={
+  is_login: true
+}
+
+
 const history = createBrowserHistory()
 if (process?.env?.NODE_ENV === 'production') {
     ReactGA.initialize('UA-204546603-1');

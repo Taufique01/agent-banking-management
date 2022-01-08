@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useAddCustomerClient } from "./addCustomerClient";
 import '../styles/customar.css'
 
-export const AddCustomer = () => {
+
+export const AddCustomer = ({authorize}) => {
   const { status, addNewCustomer } = useAddCustomerClient();
   const [customerName, setCustomerName] = useState("");
   const [phone, setPhone] = useState("");
@@ -36,9 +37,9 @@ export const AddCustomer = () => {
     }
   }, [status]);
 
-  return (
+   return  (
     <>
-      <div className="dash-header">Add customer</div>
+      <div className="dash-header">Add customer{authorize}</div>
      
       <div className="form-container">
 
@@ -75,5 +76,6 @@ export const AddCustomer = () => {
       <div onClick={addCustomer} className="submit-btn">Add Customer</div>
       </div>
     </>
-  );
+  )
+  
 };

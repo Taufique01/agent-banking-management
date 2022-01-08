@@ -1,6 +1,7 @@
 import React,{useMemo} from "react";
 import AccountTableData from './AccountTableData.json'
 import { useTable,useGlobalFilter,usePagination }  from 'react-table'
+
 import  '../styles/accountsummary.css'
 
 
@@ -42,8 +43,11 @@ export  const AccountTable=()=>{
 
    
      return (
-        <>
+          <> 
             <div className="search-container">
+              <div className="left-side">
+               Account Summary
+              </div>
                <input placeholder='search.....' value={globalFilter || ''} className="search-customer" 
                onChange={(e)=>setGlobalFilter(e.target.value)}
                 />

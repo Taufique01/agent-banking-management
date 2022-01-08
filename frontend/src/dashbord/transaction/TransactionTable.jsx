@@ -1,12 +1,51 @@
-import React,{useMemo} from 'react'
+import React,{useMemo} from "react";
+import TransactionData from './transactiondata.json'
 import { useTable,useGlobalFilter,usePagination }  from 'react-table'
-import customarlist from './../../dumpdata/customarlist.json'
-import {customerColumnList} from './../tablesformat'
-import './../styles/customerlist.css'
+import  '../styles/accountsummary.css'
 
-export const CustomarList = () => {
-      const columns = useMemo(()=>customerColumnList,[])
-      const data = useMemo(()=>customarlist,[])
+
+const  transactionTableColumn= [
+    {
+     Header:'Id',
+     accessor:'id'
+    },    
+    {
+     Header:'Customar Name',
+     accessor:'customar_name'
+
+    },
+    {
+        Header:'Trasnsaction Type',
+        accessor:'transaction_type'
+   },
+   {
+    Header:'Receiving',
+    accessor:'receiving_account'},
+    {
+    Header:'Paying Acoount',
+    accessor:'paying_account'},
+    {
+        Header:'Ammount',
+        accessor:'ammount'},
+     {
+     Header:'Pay',
+    accessor:'pay'},
+    {
+        Header:'Due',
+       accessor:'due'}
+     
+       
+    
+
+
+];
+ 
+ 
+
+export  const  TransactionTable=()=> {
+
+    const columns = useMemo(()=>transactionTableColumn,[])
+      const data = useMemo(()=>TransactionData,[])
       
 const { 
   getTableProps
@@ -27,9 +66,9 @@ const {
         <>
          <div className="search-container">
           <div className="left-side">
-            Customar List
+            Transaction Table
           </div>
-         <input placeholder='search customer' value={globalFilter || ''} className="search-customer" 
+         <input placeholder='search ...' value={globalFilter || ''} className="search-customer" 
            onChange={(e)=>setGlobalFilter(e.target.value)}
          />
 
