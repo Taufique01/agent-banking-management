@@ -67,6 +67,7 @@ export const CustomersLedger = () => {
               {headerGroup.headers.map((column) => (
                 <th {...column.getHeaderProps()}>{column.render("Header")}</th>
               ))}
+              <th>action</th>
             </tr>
           ))}
         </thead>
@@ -81,6 +82,7 @@ export const CustomersLedger = () => {
                     <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
                   );
                 })}
+                <td><button>pay</button></td>
               </tr>
             );
           })}
