@@ -1,83 +1,81 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import './styles/sidebar.css'
+import React from "react";
+import { Link } from "react-router-dom";
+import "./styles/sidebar.css";
 
-export const  DashboardSidebar=()=> {
-
-        return (
-            <div class="sidebar">
-             <div class="logo-details">
-               <i class='bx bxl-c-plus-plus'></i>
-               <span class="logo_name" text="logo">Agent Bank</span>
-              </div>
-          <ul class="nav-links">
-          <li>
+export const DashboardSidebar = () => {
+  return (
+    <div class="sidebar">
+      <div class="logo-details">
+        <i class="bx bxl-c-plus-plus"></i>
+        <span class="logo_name" text="logo">
+          Agent Bank
+        </span>
+      </div>
+      <ul class="nav-links">
+        <li>
           <Link to="/login">
-            <i class='bx bx-grid-alt' title="Dashboard" ></i>
-            <span class="links_name" >Dashboard</span>
-            </Link>
+            <i class="bx bx-grid-alt" title="Dashboard"></i>
+            <span class="links_name">Dashboard</span>
+          </Link>
         </li>
         <li>
-        <Link to="/add-customer">
-            <i class='bx bx-box' title="Add Customer" ></i>
+          <Link to="/add-customer">
+            <i class="bx bx-box" title="Add Customer"></i>
             <span class="links_name">Add Customer</span>
-            </Link>
+          </Link>
         </li>
 
         <li>
-           <Link to="/customer-list">
-            <i class='bx bx-list-ul' title="Customar List" ></i>
+          <Link to="/customer-list">
+            <i class="bx bx-list-ul" title="Customar List"></i>
             <span class="links_name">Customer list</span>
-            </Link>
+          </Link>
         </li>
-        
+
         <li>
           <Link to="/add-transaction">
-            <i class='bx bx-pie-chart-alt-2' title="Add Deposit" ></i>
+            <i class="bx bx-pie-chart-alt-2" title="Add Deposit"></i>
             <span class="links_name">Add Transaction</span>
-            </Link>
+          </Link>
         </li>
 
         <li>
-        <Link to="/transaction-list">
-            <i class='bx bx-coin-stack' title="Add Withdraw" ></i>
+          <Link to="/transaction-list">
+            <i class="bx bx-coin-stack" title="Add Withdraw"></i>
             <span class="links_name">Transaction List</span>
-            </Link> 
+          </Link>
         </li>
         <li>
-        <Link to="/login">
-            <i class='bx bx-book-alt' title="Transaction Summary" ></i>
-            <span class="links_name">Transaction Summary</span>
-            </Link>
+          <Link to="/customers-ledger">
+            <i class="bx bx-book-alt" title="Transaction Summary"></i>
+            <span class="links_name">Customers' Ledger</span>
+          </Link>
         </li>
         <li>
-        <Link to="/account-summary">
-            <i class='bx bx-user' ></i>
+          <Link to="/account-summary">
+            <i class="bx bx-user"></i>
             <span class="links_name">Account Summary</span>
-            </Link>
+          </Link>
         </li>
         <li>
-        <Link to="/login">
-            <i class='bx bx-message' ></i>
+          <Link to="/login">
+            <i class="bx bx-message"></i>
             <span class="links_name">Messages</span>
-            </Link>
+          </Link>
         </li>
         <li>
-        <Link to="/login">
-            <i class='bx bx-heart' ></i>
+          <Link to="/login">
+            <i class="bx bx-heart"></i>
             <span class="links_name">Favrorites</span>
-            </Link>
+          </Link>
         </li>
         <li>
-        <Link to="/login">
-            <i class='bx bx-cog' ></i>
+          <Link to="/login">
+            <i class="bx bx-cog"></i>
             <span class="links_name">Setting</span>
-            </Link>
+          </Link>
         </li>
-
-       
       </ul>
-  </div>
-        )
-    
-}
+    </div>
+  );
+};
