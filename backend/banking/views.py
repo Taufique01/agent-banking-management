@@ -9,7 +9,7 @@ from rest_framework.status import HTTP_200_OK, HTTP_201_CREATED, HTTP_404_NOT_FO
     HTTP_409_CONFLICT
 
 from .models import Customer, Transaction, Account
-from .serializers import CustomerSerializer, TransactionListSerializer, CustomerLedgerSerializer
+from .serializers import CustomerSerializer, TransactionListSerializer, CustomerLedgerSerializer, AccountSerializer
 
 
 class CustomerViewSet(viewsets.ViewSet):
@@ -44,22 +44,14 @@ class TransactionCreateView(APIView):
 
     def post(self, request):
         customer_id = request.data['customer_id']
-        tnx_type = request.data['transaction_type']
         receiving_account_id = request.data['receiving_account_id']
         paying_account_id = request.data['paying_account_id']
         amount = request.data.amount['amount']
         paid = request.data['paid']
         note = request.data['note']
 
-        receiving_account = Account.objects.get(id=receiving_account_id)
-        receiving_account.deposit(amount)
-
-        paying_account = Account.objects.get(id=paying_account_id)
-        paying_account.withdraw(amount)
-
         Transaction.objects.create(
             customer_id=customer_id,
-            transaction_type=tnx_type,
             receiving_account_id=receiving_account_id,
             paying_account_id=paying_account_id,
             amount=amount,
@@ -85,3 +77,8 @@ class TransactionListView(generics.ListAPIView):
 class CustomersLedgerView(generics.ListAPIView):
     queryset = Customer.objects.all()
     serializer_class = CustomerLedgerSerializer
+
+
+class AccountListView(generics.ListAPIView):
+    queryset = Account.objects.all()
+    serializer_class = AccountSerializer

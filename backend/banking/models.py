@@ -28,11 +28,15 @@ class Customer(models.Model):
         return self.name
 
     def received_amount(self):
-        received_amount = self.transaction.all().aggregate(Sum('amount'))['amount__sum']
+        received_amount = self.transaction.all().aggregate(Sum('received_amount'))['received_amount__sum']
+        if not received_amount:
+            return 0
         return received_amount
 
     def paid_amount(self):
-        paid_amount = self.transaction.all().aggregate(Sum('paid'))['paid__sum']
+        paid_amount = self.transaction.all().aggregate(Sum('paid_amount'))['paid_amount__sum']
+        if not paid_amount:
+            return 0
         return paid_amount
 
     def receivable_amount(self):
@@ -57,7 +61,6 @@ class Account(models.Model):
 
 class Transaction(DatedModel):
     customer = models.ForeignKey(Customer, related_name='transaction', on_delete=models.CASCADE, null=False)
-    transaction_type = models.CharField(max_length=10, null=False)
     receiving_account = models.ForeignKey(Account, related_name='receive_tnx', on_delete=models.CASCADE, null=False)
     paying_account = models.ForeignKey(Account, related_name='paying_tnx', on_delete=models.CASCADE, null=False)
     received_amount = models.FloatField(null=False)
@@ -69,3 +72,10 @@ class Transaction(DatedModel):
 
     def receivable_amount(self):
         return self.paid_amount - self.received_amount
+
+
+@receiver(post_save, sender=Transaction)
+def update_account(sender, instance, created, **kwargs):
+    if created:
+        instance.receiving_account.deposit(instance.received_amount)
+        instance.paying_account.withdraw(instance.paid_amount)
