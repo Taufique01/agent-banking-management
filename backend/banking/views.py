@@ -8,8 +8,8 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.status import HTTP_200_OK, HTTP_201_CREATED, HTTP_404_NOT_FOUND, HTTP_403_FORBIDDEN, \
     HTTP_409_CONFLICT
 
-from .models import Customer, Transaction
-from .serializers import CustomerSerializer, TransactionListSerializer
+from .models import Customer, Transaction, Account
+from .serializers import CustomerSerializer, TransactionListSerializer, CustomerLedgerSerializer
 
 
 class CustomerViewSet(viewsets.ViewSet):
@@ -41,6 +41,7 @@ class CustomerViewSet(viewsets.ViewSet):
 
 
 class TransactionCreateView(APIView):
+
     def post(self, request):
         customer_id = request.data['customer_id']
         tnx_type = request.data['transaction_type']
@@ -50,11 +51,17 @@ class TransactionCreateView(APIView):
         paid = request.data['paid']
         note = request.data['note']
 
+        receiving_account = Account.objects.get(id=receiving_account_id)
+        receiving_account.deposit(amount)
+
+        paying_account = Account.objects.get(id=paying_account_id)
+        paying_account.withdraw(amount)
+
         Transaction.objects.create(
             customer_id=customer_id,
             transaction_type=tnx_type,
             receiving_account_id=receiving_account_id,
-            paying_account_id =paying_account_id,
+            paying_account_id=paying_account_id,
             amount=amount,
             paid=paid,
             note=note,
@@ -73,3 +80,8 @@ class TransactionListView(generics.ListAPIView):
     queryset = Transaction.objects.all()
     serializer_class = TransactionListSerializer
     pagination_class = StandardResultsSetPagination
+
+
+class CustomersLedgerView(generics.ListAPIView):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerLedgerSerializer
