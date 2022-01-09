@@ -13,9 +13,9 @@ export const DashboardSidebar = () => {
       </div>
       <ul class="nav-links">
         <li>
-          <Link to="/login">
+          <Link to="/home">
             <i class="bx bx-grid-alt" title="Dashboard"></i>
-            <span class="links_name">Dashboard</span>
+            <span class="links_name">Home</span>
           </Link>
         </li>
         <li>

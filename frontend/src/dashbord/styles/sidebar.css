@@ -206,8 +206,11 @@ nav .profile-details i{
 .home-section .home-content{
   position: relative;
   padding-top: 104px;
+  width:100vw;
 }
+
 .home-content .overview-boxes{
+  width:80vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -224,6 +227,7 @@ nav .profile-details i{
   padding: 15px 14px;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  height:150px;
 }
 .overview-boxes .box-topic{
   font-size: 20px;

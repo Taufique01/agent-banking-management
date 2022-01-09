@@ -1,6 +1,7 @@
 .transaction-form-container{
  margin-top:120px;
  width:80vw;
+ margin-left: 10%;
 
 }
 .transaction-form-container .header{
@@ -47,9 +48,8 @@ font-weight: bold;
 }
 
 .transaction-form-container .deposit-form-content .form-group input,.select{
-
-width:60%;
-outline: none;
+    width:20%;
+    outline: none;
 border-radius: 5px;
 margin-right: 2px;
 
@@ -58,7 +58,7 @@ margin-right: 2px;
 
 .transaction-form-container .deposit-form-content .form-group input{
     height: 40px;
-    border: 1px solid grey;
+    border: 1px solid black;
 }
 .transaction-form-container .deposit-form-content .form-group .select{
     height: 50px;
@@ -78,11 +78,11 @@ margin-right: 2px;
     background-color:#0A2558;
     border-radius: 3px;
     border:1px solid grey;
-    height: 40px;
+    height: 50px;
     color:white;
-    width:10%;
+    width:15%;
    
-     margin-left:90%; 
+     margin-left:66%; 
     cursor: pointer;
     
 

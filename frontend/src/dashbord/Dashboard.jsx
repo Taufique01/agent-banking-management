@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { LoginForm } from "./authentication/LoginForm";
 import { DashboardLanding } from "./DashboardLanding";
 import { DashboardHeader } from "./Header";
+import { HomePage } from "./home/HomePage";
 import { DashboardSidebar } from "./Sidebar";
 import { AddCustomer } from "./customer/AddCustomer";
 import { AddTransaction } from "./transaction/AddTransaction";
@@ -40,6 +41,11 @@ export const Dashboard = () => {
               component={() => <AddCustomer authorize="" />}
             />
 
+         <Route path="/home">
+              <HomePage />
+            
+            
+            </Route>
             <Route path="/customer-list">
               <CustomarList />
             </Route>

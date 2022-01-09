@@ -11,7 +11,7 @@ export const AddTransaction = () => {
     return (
       <div className="transaction-form-container"> 
       
-     <div className="header top">Add Customer</div>
+     
 
         <div className ="deposit-form-content">   
         
@@ -19,7 +19,7 @@ export const AddTransaction = () => {
               <input placeholder='Name'/>
               <input placeholder='Phone'/>
               <input placeholder='Address'/>
-              <button type="submi"  className="add-customer-btn"> add customer</button>
+              <button type="submi"  className="add-customer-btn"> add new customer</button>
 
           
 
@@ -27,7 +27,7 @@ export const AddTransaction = () => {
         </div> 
       </div>
 
-          <div className="header bottom">Add Transaction</div>
+         
        
         
          <div className ="deposit-form-content">
@@ -87,7 +87,7 @@ export const AddTransaction = () => {
 
         </div>
 
-        <button type="submit" >add transaction</button>
+        <button type="submit" >add new transaction</button>
    
          
          </div>

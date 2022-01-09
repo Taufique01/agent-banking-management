@@ -39,7 +39,7 @@ export const AddCustomer = ({authorize}) => {
 
    return  (
     <>
-      <div className="dash-header">Add customer{authorize}</div>
+      
      
       <div className="form-container">
 
