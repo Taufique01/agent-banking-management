@@ -40,6 +40,15 @@ border:none;
      height:50px;
 }
 
+.customer-list-table .table-body tr td .action-btn{
+  border:none;
+  background-color: #0A2558;
+  color:white;
+  border-radius: 5px;
+  height:30px;
+  width:50px;
+}
+
 .customer-list-table .table-body tr:nth-child(odd){
     background-color: ivory;
 }
@@ -49,7 +58,7 @@ border:none;
 
 .pagination-btn{
  margin-top: 10px;
-  margin-left:33%;
+ margin-left: 33%;
 }
 
 .pagination-btn button{
@@ -58,6 +67,7 @@ border:none;
     width:100px;
     margin-left:3px;
     color:white;
+    cursor: pointer;
     border:none;
     border-radius: 5px;
     font-weight:900

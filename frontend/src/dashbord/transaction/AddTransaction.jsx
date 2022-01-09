@@ -1,80 +1,93 @@
-import Select from 'react-select';
+
 import './../styles/transactionform.css'
-const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
-  ]
+
+// const options = [
+//     { value: 'chocolate', label: 'Chocolate' },
+//     { value: 'strawberry', label: 'Strawberry' },
+//     { value: 'vanilla', label: 'Vanilla' }
+//   ]
 
 export const AddTransaction = () => {
     return (
       <div className="transaction-form-container"> 
       
-         
-          <div className="add-btn"><button>+Add Customer</button></div>
-         
-          <div className="header">Add Transaction</div>
+     <div className="header top">Add Customer</div>
+
+        <div className ="deposit-form-content">   
+        
+          <div className="form-group">
+              <input placeholder='Name'/>
+              <input placeholder='Phone'/>
+              <input placeholder='Address'/>
+              <button type="submi"  className="add-customer-btn"> add customer</button>
+
+          
+
+
+        </div> 
+      </div>
+
+          <div className="header bottom">Add Transaction</div>
+       
+        
          <div className ="deposit-form-content">
       
 
            <div className="form-group">
-              <label for="Customar Name">Customar Name:</label>
-              <select class="select">
-                <option value="volvo">Volvo</option>
+             
+              <select className="select" value="">
+                <option value="">Customer Name</option>
                 <option value="saab">Saab</option>
                 <option value="mercedes">Mercedes</option>
                 <option value="audi">Audi</option>
             </select>
-            </div>
-
-        
-
-           <div className="form-group">
-              <label for="Account">Account:</label>
-              <select class="select"></select>
-            </div>
-
-           
-
-
-            <div className="form-group">
-              <label for="Account">Transaction Type:</label>
-              <select class="select"/>
-            </div>
-
-            <div className="form-group">
-              <label for="Account">Receiveing Account:</label>
-              <select class="select"></select>
-            </div>
-
-            <div className="form-group">
-              <label for="Account">Paying  Account::</label>
-              <select class="select"></select>
-            </div>
-
-           <div className="form-group">
-              <label for="ammount">Ammount:</label>
-              <input/>
-           </div>
-
-           <div className="form-group">
-              <label for="email">Pay:</label>
-              <input/>
-           </div>
-
-           <div className="form-group">
-              <label for="email">Due:</label>
-              <input/>
-           </div>
-
-           <div className="form-group">
-              <label for="Account">Note:</label>
-              <textarea cols="43" rows="5"/>
-            </div>
 
           
 
-            <button type="submit" >Add Deposit</button>
+        
+
+         
+             
+              <select className="select">
+
+              <option value="">Account</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+              </select>
+           
+
+            <select class="select">
+              <option value="">Receiving Account</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+              </select>
+              
+           
+
+           
+             
+            <select class="select">
+              <option value="">Paying  Account</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+              </select>
+            </div>
+
+           <div className="form-group">
+             <input placeholder='Amount'/>
+
+           <input placeholder='Paid'/>
+
+            <input placeholder='Due'/>
+
+           <input  placeholder='note'/>
+
+        </div>
+
+        <button type="submit" >add transaction</button>
    
          
          </div>

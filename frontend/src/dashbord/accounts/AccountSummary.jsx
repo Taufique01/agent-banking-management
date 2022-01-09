@@ -35,11 +35,12 @@ export  const AccountTable=()=>{
       nextPage,
       previousPage,
       prepareRow,
+      pageOptions,
       state,
       setGlobalFilter,
      } = useTable({columns,data},useGlobalFilter,usePagination)
    
-     const {globalFilter} =state
+     const {pageIndex,globalFilter} =state
 
    
      return (
@@ -100,13 +101,20 @@ export  const AccountTable=()=>{
          )
        })}
      </tbody>
-                 </table>
+   </table>
 
+   <div className="pagination-btn">
+           <span>
+            page{''}
+             <strong>
+              {pageIndex+1} of {pageOptions.length}
+            </strong>
+             page{''}
+            </span>
 
-                 <div className="pagination-btn">
-          <button onClick={()=>previousPage()}>Pre page</button>
-          <button onClick={()=>nextPage()}>Next page</button>
-        </div>
+           <button onClick={()=>previousPage()}>Pre page</button>
+           <button onClick={()=>nextPage()}>Next page</button>
+   </div>
 
         </>
     )

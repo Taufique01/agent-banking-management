@@ -9,25 +9,18 @@ const customerLedgerColumn = [
     accessor: "name",
   },
   {
-    Header: "Cash Withdraw",
+    Header: "Received",
     accessor: "cash_withdraw",
   },
   {
-    Header: "Cash Paid",
+    Header: "Paid",
     accessor: "cash_paid",
   },
   {
-    Header: "Bank Withdraw",
+    Header: "receivable",
     accessor: "bank_withdraw",
   },
-  {
-    Header: "Bank Paid",
-    accessor: "banK_paid",
-  },
-  {
-    Header: "Due",
-    accessor: "due",
-  }
+ 
 ]
 
 export const CustomersLedger = () => {
@@ -42,11 +35,14 @@ export const CustomersLedger = () => {
     nextPage,
     previousPage,
     prepareRow,
+    canNextPage,
+    canPreviousPage,
     state,
+    pageOptions,
     setGlobalFilter,
   } = useTable({ columns, data }, useGlobalFilter, usePagination);
 
-  const { globalFilter } = state;
+  const { pageIndex,globalFilter } = state;
 
   return (
     <>
@@ -82,15 +78,23 @@ export const CustomersLedger = () => {
                     <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
                   );
                 })}
-                <td><button>pay</button></td>
+                <td ><button className="action-btn">Details</button></td>
               </tr>
             );
           })}
         </tbody>
       </table>
       <div className="pagination-btn">
-        <button onClick={() => previousPage()}>Pre page</button>
-        <button onClick={() => nextPage()}>Next page</button>
+        <span>
+           page{''}
+          <strong>
+              {pageIndex+1} of {pageOptions.length}
+          </strong>
+            page{''}
+
+        </span>
+        <button onClick={() => previousPage()} disabled={!canPreviousPage}>Pre page</button>
+        <button onClick={() => nextPage()} disabled={!canNextPage}>Next page</button>
       </div>
     </>
   );

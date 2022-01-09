@@ -16,11 +16,12 @@ const {
    nextPage,
    previousPage,
    prepareRow,
+   pageOptions,
    state,
    setGlobalFilter,
   } = useTable({columns,data},useGlobalFilter,usePagination)
 
-  const {globalFilter} =state
+  const {pageIndex,globalFilter} =state
     
      
     return (
@@ -82,6 +83,13 @@ const {
      </tbody>
         </table>
         <div className="pagination-btn">
+        <span>
+           page{''}
+          <strong>
+              {pageIndex+1} of {pageOptions.length}
+          </strong>
+            page{''}
+          </span>
           <button onClick={()=>previousPage()}>Pre page</button>
           <button onClick={()=>nextPage()}>Next page</button>
         </div>
