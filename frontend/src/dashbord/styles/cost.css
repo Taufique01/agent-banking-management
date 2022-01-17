@@ -1,0 +1,27 @@
+.cost-container .cost-form .form-group{
+    display: flex;
+    width:80vw;
+   
+}
+
+.cost-container .cost-form .form-group select,input{
+width:30%;
+height: 45px;
+background-color:white;
+outline: none;
+border: 1px solid grey;
+margin-right: 2px;
+}
+
+.cost-container .cost-form .form-group button{
+    border: none;
+    background-color: #0A2558;
+    color:white;
+    width:100px;
+    border: ipx solid #0A2558 ;
+
+}
+
+
+
+

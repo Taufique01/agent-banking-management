@@ -33,7 +33,7 @@
     
     .account-summery-table .table-body tr td{
          text-align: center;
-         height:50px;
+         height:40px;
     }
     
     .account-summery-table .table-body tr:nth-child(odd){

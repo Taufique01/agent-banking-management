@@ -58,15 +58,15 @@ export const DashboardSidebar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/login">
+          <Link to="/cost">
             <i class="bx bx-message"></i>
-            <span class="links_name">Messages</span>
+            <span class="links_name">Costs</span>
           </Link>
         </li>
         <li>
-          <Link to="/login">
+          <Link to="/revenue">
             <i class="bx bx-heart"></i>
-            <span class="links_name">Favrorites</span>
+            <span class="links_name">Revenue</span>
           </Link>
         </li>
         <li>

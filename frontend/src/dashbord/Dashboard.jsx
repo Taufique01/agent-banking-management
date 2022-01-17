@@ -13,6 +13,8 @@ import { Header1 } from "./Header1";
 import { CustomarList } from "./customer/CustomarList";
 import { AccountTable } from "./accounts/AccountSummary";
 import { CustomersLedger } from "./customer/CustomerLedger";
+import { Cost } from "./accounts/Cost";
+import { Revenue } from "./accounts/Revenue";
 
 // const Wrapper = styled.div`
 // //   min-height: 100vh;
@@ -65,6 +67,14 @@ export const Dashboard = () => {
             <Route path="/customers-ledger">
               <CustomersLedger />
             </Route>
+
+            <Route path="/cost">
+              <Cost />
+            </Route>
+            <Route path="/revenue">
+              <Revenue />
+            </Route>
+
           </Switch>
         </div>
       </div>
