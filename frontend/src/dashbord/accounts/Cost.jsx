@@ -52,7 +52,7 @@ export function Cost() {
            <div className="cost-form">
              <div className="form-group">
                <select className="select" value="">
-                <option value="">Customer Name</option>
+                <option value="">Account</option>
                 <option value="saab">Saab</option>
                 <option value="mercedes">Mercedes</option>
                 <option value="audi">Audi</option>
