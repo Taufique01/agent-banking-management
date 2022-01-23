@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-#$from backend.static_view import FrontendAppView
+from rest_framework import routers
+# from backend.static_view import FrontendAppView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('backend.banking.urls'))
     # re_path(r'^', FrontendAppView.as_view()),
 ]
