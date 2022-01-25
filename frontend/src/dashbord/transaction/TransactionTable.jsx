@@ -1,40 +1,34 @@
-import React, { useMemo } from "react";
-import TransactionData from "./transactiondata.json";
-import { useTable, useGlobalFilter, usePagination } from "react-table";
+import { ApiDataTable } from "../../common-components/ApiDataTable";
 import "../styles/accountsummary.css";
 
-const transactionTableColumn = [
+const transactionTableColumns = [
   {
     Header: "Date",
-    accessor: "date",
+    accessor: "updatedAt",
   },
   {
     Header: "Name",
-    accessor: "customar_name",
-  },
-  {
-    Header: "Type",
-    accessor: "transaction_type",
+    accessor: "customerName",
   },
   {
     Header: "Rec Acc.",
-    accessor: "receiving_account",
+    accessor: "receivingAccount",
   },
   {
     Header: "Paying Acc.",
-    accessor: "paying_account",
+    accessor: "payingAccount",
   },
   {
-    Header: "Amount",
-    accessor: "amount",
+    Header: "Received",
+    accessor: "receivedAmount",
   },
   {
     Header: "Paid",
-    accessor: "pay",
+    accessor: "paidAmount",
   },
   {
-    Header: "Due",
-    accessor: "due",
+    Header: "Receivables",
+    accessor: "receivableAmount",
   },
   {
     Header: "Note",
@@ -42,74 +36,13 @@ const transactionTableColumn = [
   },
 ];
 
+const transactionApiUrl = "api/transactions/";
+
 export const TransactionTable = () => {
-  const columns = useMemo(() => transactionTableColumn, []);
-  const data = useMemo(() => TransactionData, []);
-
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    page,
-    nextPage,
-    previousPage,
-    prepareRow,
-    pageOptions,
-    state,
-    setGlobalFilter,
-  } = useTable({ columns, data }, useGlobalFilter, usePagination);
-
-  const {pageIndex, globalFilter } = state;
-
   return (
-    <>
-      <div className="search-container">
-        <div className="left-side">Transaction List</div>
-        <input
-          placeholder="search ..."
-          value={globalFilter || ""}
-          className="search-customer"
-          onChange={(e) => setGlobalFilter(e.target.value)}
-        />
-      </div>
-
-      <table {...getTableProps()} className="customer-list-table">
-        <thead className="header">
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-
-        <tbody {...getTableBodyProps()} className="table-body">
-          {page.map((row) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                  return (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                  );
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-      <div className="pagination-btn">
-        <span>
-           page{''}
-           <strong>
-              {pageIndex+1} of {pageOptions.length}
-           </strong>
-            page{''}
-         </span>
-        <button onClick={() => previousPage()}>Pre page</button>
-        <button onClick={() => nextPage()}>Next page</button>
-     </div>
-    </>
+    <ApiDataTable
+      url={transactionApiUrl}
+      tableColumns={transactionTableColumns}
+    />
   );
 };

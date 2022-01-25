@@ -1,13 +1,21 @@
-import { useEffect, useState } from "react";
-import { useAddCustomerClient } from "./addCustomerClient";
-import '../styles/customar.css'
+import { useContext, useEffect, useState } from "react";
+import { Status } from "../../clients/status";
+import { useAddDataClient } from "../../clients/addDataClient";
+import { useAlert } from "react-alert";
+import { CustomerContext } from "../transaction/AddTransaction";
+import { customerApiUrl } from "../apiUrls";
+import "../styles/customar.css";
 
-
-export const AddCustomer = ({authorize}) => {
-  const { status, addNewCustomer } = useAddCustomerClient();
+export const AddCustomer = ({ authorize }) => {
+  const { status, addNewData: addNewCustomer } =
+    useAddDataClient(customerApiUrl);
   const [customerName, setCustomerName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+
+  const { reloadCustomersData } = useContext(CustomerContext);
+
+  const alert = useAlert();
 
   const addCustomer = () => {
     const customerDetails = {
@@ -32,50 +40,39 @@ export const AddCustomer = ({authorize}) => {
   };
 
   useEffect(() => {
-    if (status === "success") {
-      alert("customer added");
+    if (status === Status.Success) {
+      alert.success("customer added");
+      reloadCustomersData && reloadCustomersData();
     }
-  }, [status]);
+    status === Status.Error && alert.error("customer not added");
+  }, [alert, reloadCustomersData, status]);
 
-   return  (
-    <>
-      
-     
-      <div className="form-container">
-
-      <div className="form-group">
-      <label for="name">Name :</label>
+  return (
+    <div className="deposit-form-content">
       <input
         onChange={(e) => {
           handleNameChange(e.target.value);
         }}
         placeholder="Name"
       />
-      </div>
-    
-      <div className="form-group">
-      <label for="name">Phone :</label>
+
       <input
         onChange={(e) => {
           handlePhoneChange(e.target.value);
         }}
         placeholder="phone"
       />
-      </div>
 
-      <div className="form-group">
-      <label for="name">Address :</label>
       <input
         onChange={(e) => {
           handleAddressChange(e.target.value);
         }}
         placeholder="address"
       />
-      </div>
 
-      <div onClick={addCustomer} className="submit-btn">Add Customer</div>
-      </div>
-    </>
-  )
-  
+      <button onClick={addCustomer} className="customer-add-btn">
+        Add Customer
+      </button>
+    </div>
+  );
 };

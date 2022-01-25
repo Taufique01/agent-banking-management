@@ -1,96 +1,35 @@
+import { useEffect, useState } from "react";
+import { AddCustomer } from "../customer/AddCustomer";
+import { AddTransactionForm } from "./AddTransactionForm";
+import { createContext } from "react";
+import { useGetDataClient } from "../../clients/getDataClient";
+import { customerApiUrl } from "../apiUrls";
+import "./../styles/transactionform.css";
 
-import './../styles/transactionform.css'
-
-// const options = [
-//     { value: 'chocolate', label: 'Chocolate' },
-//     { value: 'strawberry', label: 'Strawberry' },
-//     { value: 'vanilla', label: 'Vanilla' }
-//   ]
+export const CustomerContext = createContext({
+  customersData: [],
+  reloadCustomersData: () => {},
+});
 
 export const AddTransaction = () => {
-    return (
-      <div className="transaction-form-container"> 
-      
-     
+  const { response, reloadData: reloadCustomersData } =
+    useGetDataClient(customerApiUrl);
+  const [customersData, setCustomersData] = useState([]);
 
-        <div className ="deposit-form-content">   
-        
-          <div className="form-group">
-              <input placeholder='Name'/>
-              <input placeholder='Phone'/>
-              <input placeholder='Address'/>
-              <button type="submi"  className="add-customer-btn"> add new customer</button>
+  useEffect(() => {
+    if (response === undefined) return;
+    setCustomersData(response);
+  }, [response]);
 
-          
-
-
-        </div> 
-      </div>
-
-         
-       
-        
-         <div className ="deposit-form-content">
-      
-
-           <div className="form-group">
-             
-              <select className="select" value="">
-                <option value="">Customer Name</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
-            </select>
-
-          
-
-        
-
-         
-             
-              <select className="select">
-
-              <option value="">Account</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
-              </select>
-           
-
-            <select class="select">
-              <option value="">Receiving Account</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
-              </select>
-              
-           
-
-           
-             
-            <select class="select">
-              <option value="">Paying  Account</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
-              </select>
-            </div>
-
-           <div className="form-group">
-             <input placeholder='Amount'/>
-
-           <input placeholder='Paid'/>
-
-            <input placeholder='Due'/>
-
-           <input  placeholder='note'/>
-
+  return (
+    <CustomerContext.Provider value={{ customersData, reloadCustomersData }}>
+      <div className="transaction-form-container">
+        <div className="deposit-form-content">
+          <AddCustomer />
         </div>
 
-        <button type="submit" >add new transaction</button>
-   
-         
-         </div>
+        <AddTransactionForm />
       </div>
-    );
-  };
+    </CustomerContext.Provider>
+  );
+};

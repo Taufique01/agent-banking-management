@@ -1,11 +1,11 @@
 from rest_framework import serializers
-from .models import Customer, Transaction, Account
+from .models import Customer, Transaction, Account, Cost, Revenue
 
 
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
-        fields = ('id', 'name', 'address', 'phone', 'balance')
+        fields = ('id', 'name', 'address', 'phone')
 
 
 class TransactionListSerializer(serializers.ModelSerializer):
@@ -31,4 +31,22 @@ class CustomerLedgerSerializer(serializers.ModelSerializer):
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = ('name', 'balance')
+        fields = ('id', 'name', 'balance')
+
+
+class CostSerializer(serializers.ModelSerializer):
+    account_name = serializers.CharField(source='account.name')
+    updated_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
+
+    class Meta:
+        model = Cost
+        fields = ('account_name', 'amount', 'note', 'updated_at')
+
+
+class RevenueSerializer(serializers.ModelSerializer):
+    account_name = serializers.CharField(source='account.name')
+    updated_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
+
+    class Meta:
+        model = Revenue
+        fields = ('account_name', 'amount', 'note', 'updated_at')

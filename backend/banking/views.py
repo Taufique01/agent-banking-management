@@ -8,8 +8,9 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.status import HTTP_200_OK, HTTP_201_CREATED, HTTP_404_NOT_FOUND, HTTP_403_FORBIDDEN, \
     HTTP_409_CONFLICT
 
-from .models import Customer, Transaction, Account
-from .serializers import CustomerSerializer, TransactionListSerializer, CustomerLedgerSerializer, AccountSerializer
+from .models import Customer, Transaction, Account, Cost, Revenue
+from .serializers import CustomerSerializer, TransactionListSerializer, CustomerLedgerSerializer, AccountSerializer, \
+    CostSerializer, RevenueSerializer
 
 
 class CustomerViewSet(viewsets.ViewSet):
@@ -17,10 +18,9 @@ class CustomerViewSet(viewsets.ViewSet):
     # permission_classes = [IsAuthenticated]
 
     def list(self, request):
-        customer = Customer.objects.all().order_by('-id')
+        customer = Customer.objects.all()
         serializer = CustomerSerializer(customer, many=True, context={"request": request})
-        response_dict = {"data": serializer.data}
-        return Response(response_dict, status=HTTP_200_OK)
+        return Response(serializer.data, status=HTTP_200_OK)
 
     def create(self, request):
         serializer = CustomerSerializer(data=request.data, context={"request": request})
@@ -43,21 +43,45 @@ class CustomerViewSet(viewsets.ViewSet):
 class TransactionCreateView(APIView):
 
     def post(self, request):
-        customer_id = request.data['customer_id']
-        receiving_account_id = request.data['receiving_account_id']
-        paying_account_id = request.data['paying_account_id']
-        amount = request.data.amount['amount']
-        paid = request.data['paid']
+        customer_id = int(request.data['customer_id'])
+        receiving_account_id = int(request.data['receiving_account_id'])
+        paying_account_id = int(request.data['paying_account_id'])
+        received = float(request.data['received'])
+        paid = float(request.data['paid'])
         note = request.data['note']
 
         Transaction.objects.create(
             customer_id=customer_id,
             receiving_account_id=receiving_account_id,
             paying_account_id=paying_account_id,
-            amount=amount,
-            paid=paid,
+            received_amount=received,
+            paid_amount=paid,
             note=note,
         )
+
+        return Response(status=HTTP_201_CREATED)
+
+
+class CostCreateView(APIView):
+
+    def post(self, request):
+        account_id = request.data['account_id']
+        amount = request.data['amount']
+        note = request.data['note']
+
+        Cost.objects.create(account_id=account_id, amount=amount, note=note)
+
+        return Response(status=HTTP_201_CREATED)
+
+
+class RevenueCreateView(APIView):
+
+    def post(self, request):
+        account_id = request.data['account_id']
+        amount = request.data['amount']
+        note = request.data['note']
+
+        Revenue.objects.create(account_id=account_id, amount=amount, note=note)
 
         return Response(status=HTTP_201_CREATED)
 
@@ -71,7 +95,7 @@ class StandardResultsSetPagination(PageNumberPagination):
 class TransactionListView(generics.ListAPIView):
     queryset = Transaction.objects.all()
     serializer_class = TransactionListSerializer
-    pagination_class = StandardResultsSetPagination
+    #pagination_class = StandardResultsSetPagination
 
 
 class CustomersLedgerView(generics.ListAPIView):
@@ -82,3 +106,13 @@ class CustomersLedgerView(generics.ListAPIView):
 class AccountListView(generics.ListAPIView):
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
+
+
+class CostListView(generics.ListAPIView):
+    queryset = Cost.objects.all()
+    serializer_class = CostSerializer
+
+
+class RevenueListView(generics.ListAPIView):
+    queryset = Revenue.objects.all()
+    serializer_class = RevenueSerializer

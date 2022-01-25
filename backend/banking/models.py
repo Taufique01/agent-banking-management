@@ -59,6 +59,18 @@ class Account(models.Model):
         self.save()
 
 
+class Cost(DatedModel):
+    amount = models.FloatField(default=0)
+    note = models.TextField(null=True, blank=True)
+    account = models.ForeignKey(Account, related_name='cost_account', on_delete=models.CASCADE, null=False)
+
+
+class Revenue(DatedModel):
+    amount = models.FloatField(default=0)
+    note = models.TextField(null=True, blank=True)
+    account = models.ForeignKey(Account, related_name='paying_account', on_delete=models.CASCADE, null=False)
+
+
 class Transaction(DatedModel):
     customer = models.ForeignKey(Customer, related_name='transaction', on_delete=models.CASCADE, null=False)
     receiving_account = models.ForeignKey(Account, related_name='receive_tnx', on_delete=models.CASCADE, null=False)

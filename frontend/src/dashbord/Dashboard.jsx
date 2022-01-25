@@ -10,11 +10,11 @@ import { AddCustomer } from "./customer/AddCustomer";
 import { AddTransaction } from "./transaction/AddTransaction";
 import { TransactionTable } from "./transaction/TransactionTable";
 import { Header1 } from "./Header1";
-import { CustomarList } from "./customer/CustomarList";
+import { CustomarList } from "./customer/CustomerList";
 import { AccountTable } from "./accounts/AccountSummary";
 import { CustomersLedger } from "./customer/CustomerLedger";
-import { Cost } from "./accounts/Cost";
-import { Revenue } from "./accounts/Revenue";
+import { Cost } from "./cost-revenue/Cost";
+import { Revenue } from "./cost-revenue/Revenue";
 
 // const Wrapper = styled.div`
 // //   min-height: 100vh;
