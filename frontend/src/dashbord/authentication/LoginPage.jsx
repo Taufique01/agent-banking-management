@@ -1,7 +1,10 @@
 import React,{useState} from 'react'
 import { useHistory } from 'react-router-dom'
+import image from './../img/background.jpg'
 
 import './../styles/authentication/loginpage.css'
+
+
 
 export const  LoginPage =()=> {
 
@@ -24,7 +27,8 @@ export const  LoginPage =()=> {
   
    
     return (
-        <div class="bg-img">
+        <div class="bg-img"  >
+        
         <div class="content">
         <header>Login Agent Banking</header>
        

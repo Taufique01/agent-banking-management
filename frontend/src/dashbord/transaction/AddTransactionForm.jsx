@@ -9,6 +9,8 @@ import { accountApiUrl } from "../apiUrls";
 
 const addTransactionUrl = "api/transaction/create/";
 
+
+
 export const AddTransactionForm = () => {
   const [received, setReceived] = useState("");
   const [paid, setPaid] = useState("");
@@ -77,7 +79,7 @@ export const AddTransactionForm = () => {
   };
 
   return (
-    <div className="deposit-form-content">
+    <div className="transaction-form">
       <div className="form-group">
         <div className="select-wrapper">
           <CustomerSelect onChange={handleCustomerIdChange} />

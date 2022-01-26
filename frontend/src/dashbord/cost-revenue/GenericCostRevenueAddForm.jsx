@@ -50,7 +50,8 @@ export const GenericCostRevenueAddForm = ({ onAddSuccessful, saveUrl }) => {
   }, [alert, onAddSuccessful, status]);
 
   return (
-    <div className="deposit-form-content" style={{ display: "flex" }}>
+    <div className="deposit-form-content" style={{ display: "flex",marginBottom:"10px"
+     }}>
       <div className="select-wrapper">
         <ApiDataSelect
           url={accountApiUrl}
@@ -63,7 +64,7 @@ export const GenericCostRevenueAddForm = ({ onAddSuccessful, saveUrl }) => {
         name="note"
         placeholder="note"
         onChange={handleNoteChange}
-        style={{ width: "20%" }}
+        style={{ width: "20%",marginRight:"2px" }}
       />
 
       <input
@@ -71,10 +72,10 @@ export const GenericCostRevenueAddForm = ({ onAddSuccessful, saveUrl }) => {
         placeholder="amount"
         onChange={handleAmountChange}
         type="number"
-        style={{ width: "20%" }}
+        style={{ width: "20%",marginRight:"2px" }}
       />
 
-      <button onClick={addCost} style={{ width: "20%", height: "45px" }}>
+      <button onClick={addCost} style={{ width: "20%", height: "55px" }}>
         Add
       </button>
     </div>

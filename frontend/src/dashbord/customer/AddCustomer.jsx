@@ -48,7 +48,8 @@ export const AddCustomer = ({ authorize }) => {
   }, [alert, reloadCustomersData, status]);
 
   return (
-    <div className="deposit-form-content">
+    <div className="form-container">
+      <div className="form-group">
       <input
         onChange={(e) => {
           handleNameChange(e.target.value);
@@ -73,6 +74,7 @@ export const AddCustomer = ({ authorize }) => {
       <button onClick={addCustomer} className="customer-add-btn">
         Add Customer
       </button>
+      </div>
     </div>
   );
 };

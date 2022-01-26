@@ -13,6 +13,13 @@ const selectStyles = {
     fontFamily: "Roboto",
     fontSize: "18px",
   }),
+  input: base=>({
+    ...base,
+    margin: 0,
+    padding: 0,
+    height:'50px'
+  })
+
 };
 
 export const ApiDataSelect = ({ url, placeholder, onChange }) => {

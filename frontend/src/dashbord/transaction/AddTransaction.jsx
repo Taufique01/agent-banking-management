@@ -24,9 +24,8 @@ export const AddTransaction = () => {
   return (
     <CustomerContext.Provider value={{ customersData, reloadCustomersData }}>
       <div className="transaction-form-container">
-        <div className="deposit-form-content">
           <AddCustomer />
-        </div>
+       
 
         <AddTransactionForm />
       </div>

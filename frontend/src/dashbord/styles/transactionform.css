@@ -28,28 +28,26 @@ font-weight: bold;
 
 }
 
-.transaction-form-container .deposit-form-content{
+.transaction-form-container .transaction-form{
     width:100%;
     margin-top:20px;
 }
 
-.transaction-form-container .deposit-form-content .form-group{
+.transaction-form-container .transaction-form .form-group{
    display: flex;
-   width:80vw;
+   width:70vw;
    margin-bottom:10px;
-}
-.transaction-form-container .deposit-form-content .form-group label{
-    width:30%;
-    text-align:right;
-    margin-right:5%;
-    padding-top:5px;
+   margin-left: 5%;
 }
 
-.transaction-form-container .deposit-form-content .form-group input,.select{
+
+.transaction-form-container .transaction-form .form-group input{
     width:20%;
     outline: none;
     border-radius: 5px;
     margin-right: 2px;
+    height: 50px;
+    border: 1px solid grey;
 }
 
 .select-wrapper{
@@ -64,13 +62,13 @@ font-weight: bold;
     border: 1px solid black;
 }
 .transaction-form-container .deposit-form-content .form-group .select{
-    height: 50px;
+   
     background-color: white;
    
     
 }
 
-.transaction-form-container .deposit-form-content .form-group textarea{
+.transaction-form-container .transaction-form .form-group textarea{
     outline: none;
 }
 

@@ -12,7 +12,18 @@ const selectStyles = {
     marginRight: "0px",
     fontFamily: "Roboto",
     fontSize: "18px",
+    minHeight: '30px'
+   
+    
+   
   }),
+  input: base => ({
+    ...base,
+    margin: 0,
+    padding: 0,
+    height:'50px'
+})
+  
 };
 
 export const CustomerSelect = ({ onChange }) => {
