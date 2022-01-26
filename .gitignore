@@ -8,4 +8,6 @@ env/
 .DS_Store
 node_modules
 *.iml
+db.sqlite3
+
 
