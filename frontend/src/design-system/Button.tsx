@@ -1,19 +1,20 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-  background-color: rgba(19, 63, 103, 0.78);
-  border-radius: 15px;
-  color:white;
-  padding: 20px;
+  background-color: #0a2558;
+  border-radius: 4px;
+  color: white;
+  padding: 10px;
   text-align: center;
-  font-size: 1.4em;
-  border: none;
-`
-export const TextOnlyButton = styled.button`
-  border:none;
-  background-color:transparent;
   font-size: 1.2em;
-  color:#293047;
+  border: none;
+  cursor: pointer;
+`;
+export const TextOnlyButton = styled.button`
+  border: none;
+  background-color: transparent;
+  font-size: 1.2em;
+  color: #293047;
   margin-left: 1.7%;
 `;
 

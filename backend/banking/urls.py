@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework import routers
 from .views import CustomerViewSet, TransactionCreateView, TransactionListView, CustomersLedgerView, AccountListView, \
-    CostListView, RevenueListView, CostCreateView, RevenueCreateView
+    CostListView, RevenueListView, CostCreateView, RevenueCreateView, SummaryView
 
 router = routers.DefaultRouter()
 router.register("api/customer", CustomerViewSet, basename="customer")
@@ -15,6 +15,7 @@ urlpatterns = [
     path('api/cost/create/', CostCreateView.as_view()),
     path('api/revenue/', RevenueListView.as_view()),
     path('api/revenue/create/', RevenueCreateView.as_view()),
+    path('api/summary/', SummaryView.as_view()),
 ]
 
 urlpatterns = urlpatterns + router.urls

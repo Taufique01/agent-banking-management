@@ -15,11 +15,7 @@ import { AccountTable } from "./accounts/AccountSummary";
 import { CustomersLedger } from "./customer/CustomerLedger";
 import { Cost } from "./cost-revenue/Cost";
 import { Revenue } from "./cost-revenue/Revenue";
-
-// const Wrapper = styled.div`
-// //   min-height: 100vh;
-// //   background-color: rgba(206, 217, 216, 1);
-//   `;
+import { PrivateRoute } from "./PrivateRoute";
 
 const devContent = {
   display: "flex",
@@ -38,43 +34,37 @@ export const Dashboard = () => {
         <Header1 />
         <div style={header}>
           <Switch>
-            <Route
+            <PrivateRoute
               path="/add-customer"
               component={() => <AddCustomer authorize="" />}
             />
 
-         <Route path="/home">
+            <PrivateRoute path="/home">
               <HomePage />
-            
-            
-            </Route>
-            <Route path="/customer-list">
+            </PrivateRoute>
+            <PrivateRoute path="/customer-list">
               <CustomarList />
-            </Route>
-            <Route path="/account-summary">
+            </PrivateRoute>
+            <PrivateRoute path="/account-summary">
               <AccountTable />
-            </Route>
-            {/* <Route path="/add-transaction">
-           <AddTransaction />
-         </Route> */}
-            <Route path="/add-transaction">
+            </PrivateRoute>
+            <PrivateRoute path="/add-transaction">
               <AddTransaction />
-            </Route>
-            <Route path="/transaction-list">
+            </PrivateRoute>
+            <PrivateRoute path="/transaction-list">
               <TransactionTable />
-            </Route>
+            </PrivateRoute>
 
-            <Route path="/customers-ledger">
+            <PrivateRoute path="/customers-ledger">
               <CustomersLedger />
-            </Route>
+            </PrivateRoute>
 
-            <Route path="/cost">
+            <PrivateRoute path="/cost">
               <Cost />
-            </Route>
-            <Route path="/revenue">
+            </PrivateRoute>
+            <PrivateRoute path="/revenue">
               <Revenue />
-            </Route>
-
+            </PrivateRoute>
           </Switch>
         </div>
       </div>

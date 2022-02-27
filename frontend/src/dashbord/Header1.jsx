@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
+import { LoginLogoutButton } from "./LoginLogoutButton";
 
 const signOut = () => {
   alert("logout");
@@ -17,17 +18,7 @@ export class Header1 extends Component {
           </div>
 
           <div class="profile-details">
-            <div className="dropdown-container">
-              <div className="hover-able">
-                <span class="admin_name">User Name</span>
-                <i class="bx bx-chevron-down"></i>
-              </div>
-
-              <ul className="drop-down_menu">
-                <li>Profile</li>
-                <li onClick={signOut}>Sign Out</li>
-              </ul>
-            </div>
+            <LoginLogoutButton />
           </div>
         </nav>
       </section>

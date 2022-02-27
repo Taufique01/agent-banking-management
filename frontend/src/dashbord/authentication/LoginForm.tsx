@@ -44,7 +44,7 @@ export const LoginForm = () => {
   return (
     <>
       <SingleColumnContainer width="90%;" marginTop="10%;">
-        {status === Status.Success && <Redirect to={{ pathname: "/" }} />}
+        {status === Status.Success && <Redirect to={{ pathname: "/home" }} />}
         <JustifyCenterContainer width="100%;">
           <InputField
             placeholder="Email"

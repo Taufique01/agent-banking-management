@@ -7,6 +7,7 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.status import HTTP_200_OK, HTTP_201_CREATED, HTTP_404_NOT_FOUND, HTTP_403_FORBIDDEN, \
     HTTP_409_CONFLICT
+from django.db.models import Sum
 
 from .models import Customer, Transaction, Account, Cost, Revenue
 from .serializers import CustomerSerializer, TransactionListSerializer, CustomerLedgerSerializer, AccountSerializer, \
@@ -18,7 +19,7 @@ class CustomerViewSet(viewsets.ViewSet):
     # permission_classes = [IsAuthenticated]
 
     def list(self, request):
-        customer = Customer.objects.all()
+        customer = Customer.objects.all().order_by('-id')
         serializer = CustomerSerializer(customer, many=True, context={"request": request})
         return Response(serializer.data, status=HTTP_200_OK)
 
@@ -71,6 +72,10 @@ class CostCreateView(APIView):
 
         Cost.objects.create(account_id=account_id, amount=amount, note=note)
 
+        account = Account.objects.get(id=account_id)
+        account.balance = account.balance - float(amount)
+        account.save()
+
         return Response(status=HTTP_201_CREATED)
 
 
@@ -82,6 +87,10 @@ class RevenueCreateView(APIView):
         note = request.data['note']
 
         Revenue.objects.create(account_id=account_id, amount=amount, note=note)
+
+        account = Account.objects.get(id=account_id)
+        account.balance = account.balance + float(amount)
+        account.save()
 
         return Response(status=HTTP_201_CREATED)
 
@@ -116,3 +125,21 @@ class CostListView(generics.ListAPIView):
 class RevenueListView(generics.ListAPIView):
     queryset = Revenue.objects.all()
     serializer_class = RevenueSerializer
+
+
+class SummaryView(APIView):
+
+    def get(self, request):
+        total_balance = Account.objects.all().aggregate(Sum('balance'))['balance__sum']
+
+        customers = Customer.objects.all()
+        total_receivables = 0
+        for customer in customers:
+            total_receivables = total_receivables + customer.receivable_amount()
+
+        response = {
+            'total_balance': total_balance,
+            'total_receivables': total_receivables
+        }
+
+        return Response(response)
