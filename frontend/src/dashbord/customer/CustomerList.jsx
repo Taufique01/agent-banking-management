@@ -25,6 +25,7 @@ export const CustomarList = () => {
     <ApiDataTable
       url={customerApiUrl}
       tableColumns={customerListTableColumns}
+      style={{'maxHeight':'300px'}}
     />
   );
 };

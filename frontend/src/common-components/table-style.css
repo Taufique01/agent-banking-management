@@ -10,7 +10,7 @@ position: relative;
 
 .search-container .search-customer{
     position:absolute;
-    height: 50px;
+    height:40px;
     outline: none;
     border-radius: 6px;
     border:1px solid grey;
@@ -22,22 +22,27 @@ position: relative;
 .customer-list-table{
    min-width:80vw;
    border-spacing:0px;
-   margin-top:5px;
-   padding-top:55px;
+   margin-top:2px;
+   padding-top:45px;
+   max-height: 200px;
 }
 
 .customer-list-table .header{
 background-color: black;
 color:white;
-height:50px;
+height:45px;
 border:none;
 
 
 }
+.customer-list-table .table-body tr{
+    max-height: 10px;
+    
+}
 
 .customer-list-table .table-body tr td{
      text-align: center;
-     height:40px;
+     max-height:10px;
 }
 
 .customer-list-table .table-body tr td .action-btn{

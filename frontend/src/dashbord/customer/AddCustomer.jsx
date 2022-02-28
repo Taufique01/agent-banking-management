@@ -41,16 +41,20 @@ export const AddCustomer = ({ authorize }) => {
 
   useEffect(() => {
     if (status === Status.Success) {
-      alert.success("customer added");
-      reloadCustomersData && reloadCustomersData();
-    }
+      setPhone("");
+      setAddress("");
+      setCustomerName("");
+      alert.success("customer added ");
+       reloadCustomersData && reloadCustomersData();
+      
+  }
     status === Status.Error && alert.error("customer not added");
   }, [alert, reloadCustomersData, status]);
 
   return (
     <div className="form-container">
       <div className="form-group">
-      <input
+      <input value={customerName}
         onChange={(e) => {
           handleNameChange(e.target.value);
         }}
@@ -58,6 +62,7 @@ export const AddCustomer = ({ authorize }) => {
       />
 
       <input
+         value={phone}
         onChange={(e) => {
           handlePhoneChange(e.target.value);
         }}
@@ -65,6 +70,7 @@ export const AddCustomer = ({ authorize }) => {
       />
 
       <input
+      value={address}
         onChange={(e) => {
           handleAddressChange(e.target.value);
         }}

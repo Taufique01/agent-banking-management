@@ -49,9 +49,13 @@ export const AddTransactionForm = () => {
   };
 
   useEffect(() => {
-    status === Status.Success &&
-      alert.success("Transaction added successfully");
-    status === Status.Error && alert.error("Request failed");
+     if(status === Status.Success){
+       setPaid("");
+       setReceived("");
+       setNote("");
+
+      alert.success("Transaction added successfully");}
+      status === Status.Error && alert.error("Request failed");
   }, [alert, status]);
 
   const addTransaction = () => {
@@ -82,13 +86,17 @@ export const AddTransactionForm = () => {
     <div className="transaction-form">
       <div className="form-group">
         <div className="select-wrapper">
-          <CustomerSelect onChange={handleCustomerIdChange} />
+          <CustomerSelect onChange={handleCustomerIdChange} 
+          
+          // value={customerId}
+          />
         </div>
         <div className="select-wrapper">
           <ApiDataSelect
             url={accountApiUrl}
             placeholder="Receiving Acc."
             onChange={handleReceivingAccountIdChange}
+            // value={receivingAccountId}
           />
         </div>
         <div className="select-wrapper">
@@ -96,6 +104,7 @@ export const AddTransactionForm = () => {
             url={accountApiUrl}
             placeholder="Paying Acc."
             onChange={handlePayingAccountIdChange}
+            // value={payingAccountId}
           />
         </div>
       </div>
@@ -105,15 +114,20 @@ export const AddTransactionForm = () => {
           onChange={handleReceivedChange}
           placeholder="Received"
           type="number"
+          value={received}
         />
-        <input onChange={handlePaidChange} placeholder="Paid" />
+        <input onChange={handlePaidChange} 
+        placeholder="Paid" value={paid}
+         type="number"
+        />
+        
         <input
           value={received - paid}
           placeholder="Due"
           disabled={true}
           type="number"
         />
-        <input onChange={handleNoteChange} placeholder="note" type="text" />
+        <input onChange={handleNoteChange} placeholder="note" type="text" value={note} />
 
         <button onClick={addTransaction} className="submit-btn">
           Add Transaction

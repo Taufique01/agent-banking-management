@@ -1,11 +1,11 @@
-import { useTable, useGlobalFilter, usePagination } from "react-table";
+import { useTable, useGlobalFilter, usePagination,useEffect} from "react-table";
 import React from "react";
 import "./table-style.css";
 
 export const Table = ({ data, columns }) => {
   const tableData = React.useMemo(() => data, [data]);
-
-  const {
+  
+const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
@@ -15,13 +15,15 @@ export const Table = ({ data, columns }) => {
     prepareRow,
     pageOptions,
     state,
+    setPageSize,
     setGlobalFilter,
-  } = useTable({ columns, data: tableData }, useGlobalFilter, usePagination);
+  } = useTable({ columns, data: tableData,initialState: { pageSize: 100 } }, useGlobalFilter, usePagination);
 
-  const { pageIndex, globalFilter } = state;
+  const { pageIndex, globalFilter,pageSize} = state;
 
   return (
     <>
+       
       <div className="search-container">
         <input
           placeholder="search customer"
@@ -31,7 +33,8 @@ export const Table = ({ data, columns }) => {
         />
       </div>
 
-      <table {...getTableProps()} className="customer-list-table">
+      <table {...getTableProps}        
+ className="customer-list-table">
         <thead className="header">
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
