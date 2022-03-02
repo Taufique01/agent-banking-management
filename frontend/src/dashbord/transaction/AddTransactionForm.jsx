@@ -6,10 +6,7 @@ import { useAddDataClient } from "../../clients/addDataClient";
 import { CustomerSelect } from "./CustomerSelect";
 import { useAlert } from "react-alert";
 import { accountApiUrl } from "../apiUrls";
-
 const addTransactionUrl = "api/transaction/create/";
-
-
 
 export const AddTransactionForm = () => {
   const [received, setReceived] = useState("");
