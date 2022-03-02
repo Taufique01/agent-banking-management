@@ -61,6 +61,7 @@ export const AddTransactionForm = () => {
        setPaid("");
        setReceived("");
        setNote("");
+       
 
       alert.success("Transaction added successfully");}
       status === Status.Error && alert.error("Request failed");
