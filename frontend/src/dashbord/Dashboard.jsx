@@ -26,12 +26,12 @@ const header = {
   marginTop: "100px",
 };
 
-export const Dashboard = () => {
+export const Dashboard = (props) => {
   return (
     <div style={devContent}>
       <DashboardSidebar />
       <div>
-        <Header1 />
+        <Header1  pathname={props.location}/>
         <div style={header}>
           <Switch>
             <PrivateRoute
@@ -43,7 +43,7 @@ export const Dashboard = () => {
               <HomePage />
             </PrivateRoute>
             <PrivateRoute path="/customer-list">
-              <CustomarList />
+              <CustomarList pathname="customarlist"/>
             </PrivateRoute>
             <PrivateRoute path="/account-summary">
               <AccountTable />

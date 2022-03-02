@@ -22,7 +22,7 @@ const selectStyles = {
 
 };
 
-export const ApiDataSelect = ({ url, placeholder, onChange }) => {
+export const  ApiDataSelect = ({ url, placeholder, onChange,amount }) => {
   const { response } = useGetDataClient(url);
   const [options, setOptions] = useState([]);
 
@@ -43,6 +43,8 @@ export const ApiDataSelect = ({ url, placeholder, onChange }) => {
       placeholder={placeholder}
       styles={selectStyles}
       onChange={onChange}
+      value= {amount}
+      defaultValue={{ label: placeholder}}
     />
   );
 };

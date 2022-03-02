@@ -15,6 +15,8 @@ export const AddTransactionForm = () => {
   const [received, setReceived] = useState("");
   const [paid, setPaid] = useState("");
   const [note, setNote] = useState("");
+  const [deposit, setDeposit] = useState("");
+  const [withdraw, setWithdraw] = useState("")
   const [customerId, setCustomerId] = useState(null);
   const [receivingAccountId, setReceivingAccountId] = useState(null);
   const [payingAccountId, setPayingAccountId] = useState(null);
@@ -34,6 +36,12 @@ export const AddTransactionForm = () => {
 
   const handleNoteChange = (event) => {
     setNote(event.target.value);
+  };
+  const handleDepositChange = (event) => {
+    setDeposit(event.target.value);
+  };
+  const handleWithdrawChange = (event) => {
+    setWithdraw(event.target.value);
   };
 
   const handleCustomerIdChange = (newValue) => {
@@ -66,7 +74,7 @@ export const AddTransactionForm = () => {
       !receivingAccountId ||
       !payingAccountId
     ) {
-      alert("missing required fields");
+      alert.error("missing required fields");
       return;
     }
 
@@ -82,21 +90,54 @@ export const AddTransactionForm = () => {
     addNewTransaction(transactionInputs);
   };
 
+  const addWithdraw= () => {
+    if (isEmptyOrSpacesOnly(withdraw) ){
+      alert.error("missing required fields");
+      return;
+    }
+
+    const transactionInputs = {
+     
+      withdraw
+    };
+
+    // addNewDeposit(transactionInputs);
+  };
+
+  const addDeposit= () => {
+    if (
+      isEmptyOrSpacesOnly(deposit) 
+     
+     
+    ) {
+      alert.error("missing required fields");
+      return;
+    }
+
+    const transactionInputs = {
+     
+      deposit
+    };
+
+    // addNewDeposit(transactionInputs);
+  };
+
   return (
     <div className="transaction-form">
-      <div className="form-group">
+      
+      <div className="flex-container">
+         <div clasName="flex-content" style={{marginRight:'5px'}}>
+       
         <div className="select-wrapper">
           <CustomerSelect onChange={handleCustomerIdChange} 
-          
-          // value={customerId}
-          />
+           />
         </div>
         <div className="select-wrapper">
           <ApiDataSelect
             url={accountApiUrl}
             placeholder="Receiving Acc."
             onChange={handleReceivingAccountIdChange}
-            // value={receivingAccountId}
+           
           />
         </div>
         <div className="select-wrapper">
@@ -104,35 +145,52 @@ export const AddTransactionForm = () => {
             url={accountApiUrl}
             placeholder="Paying Acc."
             onChange={handlePayingAccountIdChange}
-            // value={payingAccountId}
+           
           />
         </div>
-      </div>
-
-      <div className="form-group">
+     
+      
         <input
           onChange={handleReceivedChange}
           placeholder="Received"
           type="number"
           value={received}
         />
+
         <input onChange={handlePaidChange} 
         placeholder="Paid" value={paid}
          type="number"
         />
+
         
         <input
-          value={received - paid}
           placeholder="Due"
           disabled={true}
           type="number"
+          value={received - paid}
         />
+
         <input onChange={handleNoteChange} placeholder="note" type="text" value={note} />
 
         <button onClick={addTransaction} className="submit-btn">
           Add Transaction
         </button>
       </div>
+
+      <div className="flex-content" style={{marginRight:'5px'}}>
+        <input onChange={handleDepositChange} placeholder="deposit" type="number"  value={deposit} />
+        <button onClick={addDeposit} className="submit-btn">Add Deposit</button>
+      </div>
+      
+      <div className="flex-content">
+      
+        <input onChange={handleWithdrawChange} placeholder="withdraw" type="number" value={withdraw} />
+        <button onClick={addWithdraw} className="submit-btn">Add Withdraw</button>
+      
+      
+      </div>
+    </div>
     </div>
   );
+
 };

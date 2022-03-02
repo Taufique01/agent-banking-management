@@ -10,6 +10,7 @@ export const GenericCostRevenueAddForm = ({ onAddSuccessful, saveUrl }) => {
   const [accountId, setAccountId] = useState(null);
   const [amount, setAmount] = useState("");
   const [note, setNote] = useState("");
+  const [amountPlaceHolder, setPlaceHolder] = useState("amount");
 
   const { status, addNewData } = useAddDataClient(saveUrl);
 
@@ -41,6 +42,8 @@ export const GenericCostRevenueAddForm = ({ onAddSuccessful, saveUrl }) => {
 
   useEffect(() => {
     if (status === Status.Success) {
+      setNote("");
+      setAmount("")
       alert.success("Successfully added!");
       onAddSuccessful();
       return;
@@ -50,21 +53,23 @@ export const GenericCostRevenueAddForm = ({ onAddSuccessful, saveUrl }) => {
   }, [alert, onAddSuccessful, status]);
 
   return (
-    <div className="deposit-form-content" style={{ display: "flex",marginBottom:"10px"
+    <div className="deposit-form-content" style={{ display: "flex",marginBottom:"10px",marginTop:'-10px'
      }}>
-      <div className="select-wrapper">
+      <div className="select-wrapper" style={{width:'25%',marginRight:"2px"}} >
         <ApiDataSelect
           url={accountApiUrl}
           placeholder="account"
           onChange={handleAccountChange}
+          value={amount}
         />
       </div>
 
       <input
         name="note"
         placeholder="note"
+        value={note}
         onChange={handleNoteChange}
-        style={{ width: "20%",marginRight:"2px" }}
+        style={{ width: "25%",marginRight:"2px" }}
       />
 
       <input
@@ -72,10 +77,11 @@ export const GenericCostRevenueAddForm = ({ onAddSuccessful, saveUrl }) => {
         placeholder="amount"
         onChange={handleAmountChange}
         type="number"
-        style={{ width: "20%",marginRight:"2px" }}
+        value={amount}
+        style={{ width: "25%",marginRight:"2px" }}
       />
 
-      <button onClick={addCost} style={{ width: "20%", height: "55px" }}>
+      <button onClick={addCost} style={{ width: "25%", height: "55px" }}>
         Add
       </button>
     </div>

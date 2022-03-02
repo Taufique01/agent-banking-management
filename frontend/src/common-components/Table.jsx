@@ -17,7 +17,7 @@ const {
     state,
     setPageSize,
     setGlobalFilter,
-  } = useTable({ columns, data: tableData,initialState: { pageSize: 100 } }, useGlobalFilter, usePagination);
+  } = useTable({ columns, data: tableData,initialState: { pageSize: 25 } }, useGlobalFilter, usePagination);
 
   const { pageIndex, globalFilter,pageSize} = state;
 
@@ -26,7 +26,7 @@ const {
        
       <div className="search-container">
         <input
-          placeholder="search customer"
+          placeholder="search"
           value={globalFilter || ""}
           className="search-customer"
           onChange={(e) => setGlobalFilter(e.target.value)}
